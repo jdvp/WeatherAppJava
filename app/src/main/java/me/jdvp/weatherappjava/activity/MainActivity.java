@@ -1,15 +1,19 @@
-package me.jdvp.weatherappjava;
+package me.jdvp.weatherappjava.activity;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import dagger.android.support.DaggerAppCompatActivity;
+import me.jdvp.weatherappjava.R;
+import me.jdvp.weatherappjava.viewmodel.ForecastViewModel;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends DaggerAppCompatActivity {
 
     @BindView(R.id.current_weather_image_view)
     ImageView currentWeatherImageView;
@@ -23,10 +27,15 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.hourly_forecast_recycler_view)
     RecyclerView hourlyForecastRecyclerView;
 
+    @Inject
+    ForecastViewModel forecastViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
+        forecastViewModel.getForecast().subscribe();
     }
 }
