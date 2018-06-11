@@ -2,4 +2,6 @@
     <string name="app_name">WeatherAppJava</string>
     <string name="hourly_forecast_header">Hourly forecast</string>
     <string name="now_header">NOW</string>
+    <string name="error_title">Oops</string>
+    <string name="error_message_service_failure">Something went wrong, please try again later</string>
 </resources>

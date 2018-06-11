@@ -3,15 +3,15 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "me.jdvp.weatherappjava"
+        applicationId 'me.jdvp.weatherappjava'
         minSdkVersion 23
         targetSdkVersion 27
         versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionName '1.0'
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
 
         //API Keys
-        buildConfigField 'String', "DarkSkyAPIKey", WeatherAppJava_DarkSkyAPIKey
+        buildConfigField 'String', 'DarkSkyAPIKey', WeatherAppJava_DarkSkyAPIKey
     }
     buildTypes {
         release {
@@ -20,6 +20,11 @@ android {
         }
     }
 
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -30,7 +35,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation "com.android.support:recyclerview-v7:27.1.1"
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
 
     //RxJava
     implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
@@ -55,6 +60,12 @@ dependencies {
 
     //Unit tests
     testImplementation 'junit:junit:4.12'
+    testImplementation 'org.mockito:mockito-core:2.18.3'
+
+    testImplementation 'org.robolectric:robolectric:3.8'
+    testImplementation 'org.robolectric:shadows-multidex:3.8'
+    testImplementation 'org.robolectric:shadows-supportv4:3.8'
+    testAnnotationProcessor 'com.google.dagger:dagger-compiler:2.15'
 
     //Instrumented tests
     androidTestImplementation 'com.android.support.test:runner:1.0.2'

@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
 public class Forecast {
     @SerializedName("time")
     @Expose
-    private Integer time;
+    private Long time;
 
     @SerializedName("summary")
     @Expose
@@ -18,7 +18,7 @@ public class Forecast {
 
     @SerializedName("icon")
     @Expose
-    private String icon;
+    private IconWeatherType iconWeatherType;
 
     @SerializedName("nearestStormDistance")
     @Expose
@@ -88,84 +88,84 @@ public class Forecast {
     @Expose
     private Double ozone;
 
-
-    private Integer getTime() {
+    public Long getTime() {
         return time;
     }
 
-    private String getSummary() {
+    public String getSummary() {
         return summary;
     }
 
-    private String getIcon() {
-        return icon;
-    }
 
-    private Integer getNearestStormDistance() {
+    public Integer getNearestStormDistance() {
         return nearestStormDistance;
     }
 
-    private Double getPrecipIntensity() {
+    public Double getPrecipIntensity() {
         return precipIntensity;
     }
 
-    private Double getPrecipIntensityError() {
+    public Double getPrecipIntensityError() {
         return precipIntensityError;
     }
 
-    private Double getPrecipProbability() {
+    public Double getPrecipProbability() {
         return precipProbability;
     }
 
-    private String getPrecipType() {
+    public String getPrecipType() {
         return precipType;
     }
 
-    private Double getTemperature() {
+    public Double getTemperature() {
         return temperature;
     }
 
-    private Double getApparentTemperature() {
+    public IconWeatherType getIconWeatherType() {
+        return iconWeatherType;
+    }
+
+    public Double getApparentTemperature() {
         return apparentTemperature;
     }
 
-    private Double getDewPoint() {
+    public Double getDewPoint() {
         return dewPoint;
     }
 
-    private Double getHumidity() {
+    public Double getHumidity() {
         return humidity;
     }
 
-    private Double getPressure() {
+    public Double getPressure() {
         return pressure;
     }
 
-    private Double getWindSpeed() {
+    public Double getWindSpeed() {
         return windSpeed;
     }
 
-    private Double getWindGust() {
+    public Double getWindGust() {
         return windGust;
     }
 
-    private Integer getWindBearing() {
+    public Integer getWindBearing() {
         return windBearing;
     }
 
-    private Double getCloudCover() {
+    public Double getCloudCover() {
         return cloudCover;
     }
 
-    private Integer getUvIndex() {
+    public Integer getUvIndex() {
         return uvIndex;
     }
 
-    private Double getVisibility() {
+    public Double getVisibility() {
         return visibility;
     }
 
-    private Double getOzone() {
+    public Double getOzone() {
         return ozone;
     }
 
@@ -179,7 +179,7 @@ public class Forecast {
         if (time != null ? !time.equals(forecast.time) : forecast.time != null) return false;
         if (summary != null ? !summary.equals(forecast.summary) : forecast.summary != null)
             return false;
-        if (icon != null ? !icon.equals(forecast.icon) : forecast.icon != null) return false;
+        if (iconWeatherType != forecast.iconWeatherType) return false;
         if (nearestStormDistance != null ? !nearestStormDistance.equals(forecast.nearestStormDistance) : forecast.nearestStormDistance != null)
             return false;
         if (precipIntensity != null ? !precipIntensity.equals(forecast.precipIntensity) : forecast.precipIntensity != null)
@@ -219,7 +219,7 @@ public class Forecast {
     public int hashCode() {
         int result = time != null ? time.hashCode() : 0;
         result = 31 * result + (summary != null ? summary.hashCode() : 0);
-        result = 31 * result + (icon != null ? icon.hashCode() : 0);
+        result = 31 * result + (iconWeatherType != null ? iconWeatherType.hashCode() : 0);
         result = 31 * result + (nearestStormDistance != null ? nearestStormDistance.hashCode() : 0);
         result = 31 * result + (precipIntensity != null ? precipIntensity.hashCode() : 0);
         result = 31 * result + (precipIntensityError != null ? precipIntensityError.hashCode() : 0);

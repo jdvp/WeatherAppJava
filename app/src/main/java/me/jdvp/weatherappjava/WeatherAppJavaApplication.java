@@ -9,7 +9,7 @@ import dagger.android.DaggerApplication;
 
 public class WeatherAppJavaApplication extends DaggerApplication {
     @Override
-    protected AndroidInjector<WeatherAppJavaApplication> applicationInjector() {
+    public AndroidInjector<WeatherAppJavaApplication> applicationInjector() {
         return DaggerAppComponent.builder().create(this);
     }
 }
