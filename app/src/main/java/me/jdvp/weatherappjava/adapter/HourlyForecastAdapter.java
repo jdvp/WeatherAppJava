@@ -38,7 +38,8 @@ public class HourlyForecastAdapter extends RecyclerView.Adapter<HourlyForecastAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.timeTextView.setText(ForecastUtil.getTime(forecastList.get(position), Calendar.getInstance()));
-        holder.temperatureTextView.setText(Long.toString(ForecastUtil.getTemperature(forecastList.get(position))));
+        holder.temperatureTextView.setText(ForecastUtil.getTemperature(forecastList.get(position)));
+        holder.precipitationTextView.setText(ForecastUtil.getPrecipitationProbability(forecastList.get(position)));
     }
 
     @Override

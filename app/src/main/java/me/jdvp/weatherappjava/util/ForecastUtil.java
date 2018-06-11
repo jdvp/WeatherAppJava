@@ -10,12 +10,12 @@ import me.jdvp.weatherappjava.model.Forecast;
 
 public class ForecastUtil {
 
-    public static long getTemperature(Forecast forecast) {
+    public static String getTemperature(Forecast forecast) {
         if (forecast == null || forecast.getTemperature() == null) {
-            return 0L;
+            return "";
         }
 
-        return Math.round(forecast.getTemperature());
+        return "" + Math.round(forecast.getTemperature());
     }
 
     public static String getTime(Forecast forecast, Calendar calendar) {
@@ -35,5 +35,14 @@ public class ForecastUtil {
         String amPm = calendar.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM";
         return hour + " " + amPm;
 
+    }
+
+    public static String getPrecipitationProbability(Forecast forecast) {
+        if (forecast == null || forecast.getPrecipProbability() == null) {
+            return "";
+        }
+
+        int probability = (int) (forecast.getPrecipProbability() * 100);
+        return probability + "%";
     }
 }

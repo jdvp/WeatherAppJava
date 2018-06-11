@@ -82,7 +82,7 @@ public class MainActivityTest {
      * returned
      */
     @Test
-    public void testShouldAtMos6() {
+    public void testShouldShowNHoursIfServiceReturnsLessThan12() {
         Gson gson = new Gson();
         ForecastResponse response = gson.fromJson(ForecastServiceResponses.SUCCESSFUL_RESPONSE_6_HRS, ForecastResponse.class);
         Mockito.when(forecastViewModel.getForecast()).thenReturn(Observable.just(response));

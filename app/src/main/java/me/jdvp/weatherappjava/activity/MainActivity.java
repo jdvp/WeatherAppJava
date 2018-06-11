@@ -73,8 +73,7 @@ public class MainActivity extends DaggerAppCompatActivity {
         successLayout.setVisibility(View.VISIBLE);
         errorLayout.setVisibility(View.GONE);
 
-        long currentTemperature = ForecastUtil.getTemperature(forecastResponse.getCurrently());
-        currentTemperatureTextView.setText(Long.toString(currentTemperature));
+        currentTemperatureTextView.setText(ForecastUtil.getTemperature(forecastResponse.getCurrently()));
         currentWeatherTextView.setText(forecastResponse.getCurrently().getSummary());
 
         //todo icon

@@ -20,7 +20,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 public class ForecastUtilTest {
     @Test
     public void testGetTemperature_NullForecast() {
-        assertEquals(0L, ForecastUtil.getTemperature(null));
+        assertEquals("", ForecastUtil.getTemperature(null));
     }
 
     @Test
@@ -28,7 +28,7 @@ public class ForecastUtilTest {
         Forecast mockForecast = Mockito.mock(Forecast.class);
         Mockito.when(mockForecast.getTemperature()).thenReturn(null);
 
-        assertEquals(0L, ForecastUtil.getTemperature(mockForecast));
+        assertEquals("", ForecastUtil.getTemperature(mockForecast));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class ForecastUtilTest {
         Forecast mockForecast = Mockito.mock(Forecast.class);
         Mockito.when(mockForecast.getTemperature()).thenReturn(32.50);
 
-        assertEquals(33L, ForecastUtil.getTemperature(mockForecast));
+        assertEquals("33", ForecastUtil.getTemperature(mockForecast));
     }
 
     @Test
@@ -44,7 +44,7 @@ public class ForecastUtilTest {
         Forecast mockForecast = Mockito.mock(Forecast.class);
         Mockito.when(mockForecast.getTemperature()).thenReturn(32.49);
 
-        assertEquals(32L, ForecastUtil.getTemperature(mockForecast));
+        assertEquals("32", ForecastUtil.getTemperature(mockForecast));
     }
 
     @Test
