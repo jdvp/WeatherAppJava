@@ -12,6 +12,7 @@ import io.reactivex.Observable;
 import io.reactivex.observers.TestObserver;
 import me.jdvp.weatherappjava.RxJavaTest;
 import me.jdvp.weatherappjava.api.ForecastAPI;
+import me.jdvp.weatherappjava.api.LocationAPI;
 import me.jdvp.weatherappjava.model.ForecastResponse;
 
 /**
@@ -29,7 +30,7 @@ public class ForecastViewModelImplTest extends RxJavaTest {
     @Before
     public void setup() {
         forecastAPI = Mockito.mock(ForecastAPI.class);
-        forecastViewModel = new ForecastViewModelImpl(forecastAPI);
+        forecastViewModel = new ForecastViewModelImpl(forecastAPI, Mockito.mock(LocationAPI.class));
     }
 
     @Test

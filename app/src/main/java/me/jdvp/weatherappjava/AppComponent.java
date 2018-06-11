@@ -5,7 +5,6 @@ import javax.inject.Singleton;
 import dagger.Component;
 import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
-import me.jdvp.weatherappjava.viewmodel.impl.ViewModelModule;
 
 /**
  * Created by jdvp on 6/10/18.
@@ -14,7 +13,7 @@ import me.jdvp.weatherappjava.viewmodel.impl.ViewModelModule;
 @Component(
         modules = {
                 AndroidSupportInjectionModule.class,
-                ViewModelModule.class,
+                AppModule.class,
                 ViewsModule.class
         }
 )
