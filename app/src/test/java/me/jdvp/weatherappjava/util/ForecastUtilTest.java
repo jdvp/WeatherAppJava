@@ -13,6 +13,8 @@ import static junit.framework.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
 
 /**
+ * Tests the ForecastUtil utility class
+ *
  * Created by jdvp on 6/10/18.
  */
 
@@ -141,5 +143,27 @@ public class ForecastUtilTest {
 
         //calendar time should have been set during the test
         Mockito.verify(mockCalendar, Mockito.times(1)).setTimeInMillis(Mockito.anyLong());
+    }
+
+    @Test
+    public void getPrecipitationProbability_NullForecast() {
+        assertEquals("", ForecastUtil.getPrecipitationProbability(null));
+    }
+
+    @Test
+    public void getPrecipitationProbability_NullPrecipitation() {
+        Forecast mockForecast = Mockito.mock(Forecast.class);
+        Mockito.when(mockForecast.getPrecipProbability()).thenReturn(null);
+
+        assertEquals("", ForecastUtil.getPrecipitationProbability(mockForecast));
+    }
+
+
+    @Test
+    public void getPrecipitationProbability_SuccessWithTruncation() {
+        Forecast mockForecast = Mockito.mock(Forecast.class);
+        Mockito.when(mockForecast.getPrecipProbability()).thenReturn(.4323);
+
+        assertEquals("43%", ForecastUtil.getPrecipitationProbability(mockForecast));
     }
 }

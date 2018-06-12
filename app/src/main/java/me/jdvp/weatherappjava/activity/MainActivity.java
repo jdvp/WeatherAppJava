@@ -1,6 +1,7 @@
 package me.jdvp.weatherappjava.activity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -35,6 +36,11 @@ public class MainActivity extends DaggerAppCompatActivity {
     @Inject
     LocationViewModel locationViewModel;
 
+    @Inject
+    Context context;
+
+    private AlertDialog currentlyDisplayedAlert;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,7 @@ public class MainActivity extends DaggerAppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
+        updateBasedOnLocationSettings();
     }
 
     /**
@@ -54,12 +61,17 @@ public class MainActivity extends DaggerAppCompatActivity {
      * or enter a place for which they want to check weather conditions
      */
     public void updateBasedOnLocationSettings() {
+        if (currentlyDisplayedAlert != null && currentlyDisplayedAlert.isShowing()) {
+            currentlyDisplayedAlert.dismiss();
+            currentlyDisplayedAlert = null;
+        }
+
         //if the app knows the location to display weather for, display weather information
         if (locationViewModel.hasSelectedLocation()) {
             initFragment(new ForecastFragment());
         //otherwise give the user a few options for selecting a location
         } else {
-            new AlertDialog.Builder(this)
+            currentlyDisplayedAlert = new AlertDialog.Builder(this)
                     .setMessage(R.string.no_location_dialog_message)
                     .setCancelable(false)
                     .setPositiveButton(R.string.no_location_dialog_option_turn_on_permissions, (dialog, which) -> openApplicationSettings())
@@ -155,7 +167,7 @@ public class MainActivity extends DaggerAppCompatActivity {
      * @return boolean denoting whether the permission has been granted
      */
     private boolean hasLocationPermissions() {
-        int permissionCheck = ContextCompat.checkSelfPermission(this, ACCESS_COARSE_LOCATION);
+        int permissionCheck = ContextCompat.checkSelfPermission(context, ACCESS_COARSE_LOCATION);
         return permissionCheck == PERMISSION_GRANTED;
     }
 }

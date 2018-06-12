@@ -1,5 +1,7 @@
 package me.jdvp.weatherappjava.activity;
 
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
@@ -23,7 +25,9 @@ import me.jdvp.weatherappjava.TestWeatherAppJavaApplication;
 import me.jdvp.weatherappjava.model.ForecastResponse;
 import me.jdvp.weatherappjava.response.ForecastServiceResponses;
 import me.jdvp.weatherappjava.viewmodel.ForecastViewModel;
+import me.jdvp.weatherappjava.viewmodel.LocationViewModel;
 
+import static android.Manifest.permission.ACCESS_COARSE_LOCATION;
 import static junit.framework.Assert.assertEquals;
 
 /**
@@ -35,12 +39,23 @@ import static junit.framework.Assert.assertEquals;
 @RunWith(RobolectricTestRunner.class)
 public class MainActivityTest {
     @Inject
+    LocationViewModel locationViewModel;
+
+    @Inject
     ForecastViewModel forecastViewModel;
+
+    @Inject
+    Context context;
 
     @Before
     public void setup() {
         TestWeatherAppJavaApplication app = (TestWeatherAppJavaApplication) RuntimeEnvironment.application;
         app.getTestAppComponent().inject(this);
+
+        //by default we will say location permissions have been given
+        Mockito.when(locationViewModel.hasSelectedLocation()).thenReturn(true);
+        Mockito.when(context.checkPermission(Mockito.eq(ACCESS_COARSE_LOCATION), Mockito.anyInt(), Mockito.anyInt()))
+                .thenReturn(PackageManager.PERMISSION_GRANTED);
     }
 
     /**
