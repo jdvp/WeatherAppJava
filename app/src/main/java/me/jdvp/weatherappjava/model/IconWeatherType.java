@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
+ * Weather icon for displaying visual representation of the current weather conditions
+ *
  * Created by jdvp on 6/10/18.
  */
 

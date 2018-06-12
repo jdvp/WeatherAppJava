@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
+ * Response type returned by the DarkSkyAPI
+ *
  * Created by jdvp on 6/10/18.
  */
 

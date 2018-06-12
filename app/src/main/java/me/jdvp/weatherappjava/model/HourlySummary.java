@@ -6,6 +6,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 /**
+ * Forecast information for each hour going many hours in the future
+ *
  * Created by jdvp on 6/10/18.
  */
 
