@@ -8,10 +8,6 @@ import me.jdvp.weatherappjava.model.ForecastResponse;
 import me.jdvp.weatherappjava.viewmodel.ForecastViewModel;
 import me.jdvp.weatherappjava.viewmodel.RxTransform;
 
-/**
- * Created by jdvp on 6/10/18.
- */
-
 class ForecastViewModelImpl implements ForecastViewModel {
     private LocationAPI locationAPI;
     private ForecastAPI forecastAPI;

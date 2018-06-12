@@ -12,6 +12,7 @@ android {
 
         //API Keys
         buildConfigField 'String', 'DarkSkyAPIKey', WeatherAppJava_DarkSkyAPIKey
+        resValue 'string', 'PlacesAPIKey', WeatherAppJava_GooglePlaesAPIKey
     }
     buildTypes {
         release {
@@ -37,6 +38,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.google.android.gms:play-services-location:15.0.1'
+    implementation 'com.google.android.gms:play-services-places:15.0.1'
+
 
     //RxJava
     implementation 'io.reactivex.rxjava2:rxjava:2.1.12'
@@ -56,9 +59,9 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     //Retrofit & Service
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
 
     //Unit tests

@@ -7,6 +7,8 @@ import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
 /**
+ * Component used to define the dependency modules that are used in the application
+ *
  * Created by jdvp on 6/10/18.
  */
 @Singleton

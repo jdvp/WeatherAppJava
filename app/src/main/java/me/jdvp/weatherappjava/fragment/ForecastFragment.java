@@ -23,11 +23,12 @@ import me.jdvp.weatherappjava.util.ForecastUtil;
 import me.jdvp.weatherappjava.viewmodel.ForecastViewModel;
 
 /**
+ * Displays current weather conditions and an hourly forecast for the selected location
+ *
  * Created by jdvp on 6/11/18.
  */
 
 public class ForecastFragment extends DaggerFragment {
-
     @BindView(R.id.current_weather_image_view)
     ImageView currentWeatherImageView;
 
@@ -75,6 +76,11 @@ public class ForecastFragment extends DaggerFragment {
         ));
     }
 
+    /**
+     * Uses the forecast response data to display current and forecast weather conditions to the user
+     *
+     * @param forecastResponse Service response outlining weather conditions
+     */
     private void displayForecast(ForecastResponse forecastResponse) {
         successLayout.setVisibility(View.VISIBLE);
         errorLayout.setVisibility(View.GONE);
@@ -87,6 +93,11 @@ public class ForecastFragment extends DaggerFragment {
         hourlyForecastRecyclerView.setAdapter(new HourlyForecastAdapter(forecastResponse.getHourlySummary().getHourlyForecast()));
     }
 
+    /**
+     * Shows an error in the case that a service call fails
+     *
+     * @param errorMessage The message to display to the user
+     */
     private void showError(@NonNull String errorMessage) {
         successLayout.setVisibility(View.GONE);
         errorLayout.setVisibility(View.VISIBLE);

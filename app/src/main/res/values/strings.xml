@@ -5,4 +5,8 @@
     <string name="error_title">Oops</string>
     <string name="error_message_service_failure">Something went wrong, please try again later</string>
     <string name="search_for_location">Search for location</string>
+
+    <string name="no_location_dialog_message">In order to see weather you must enable location permissions or select a location</string>
+    <string name="no_location_dialog_option_turn_on_permissions">Turn on location permissions</string>
+    <string name="no_location_dialog_option_select_location">Select location manually</string>
 </resources>

@@ -7,6 +7,8 @@ import me.jdvp.weatherappjava.fragment.ForecastFragment;
 import me.jdvp.weatherappjava.fragment.LocationSelectionFragment;
 
 /**
+ * Module that defines which activities and fragments will be injected
+ *
  * Created by jdvp on 6/10/18.
  */
 @Module

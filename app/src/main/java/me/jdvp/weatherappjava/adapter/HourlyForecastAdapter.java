@@ -18,6 +18,8 @@ import me.jdvp.weatherappjava.model.Forecast;
 import me.jdvp.weatherappjava.util.ForecastUtil;
 
 /**
+ * Adapter that allows hourly forecast data to be shown
+ *
  * Created by jdvp on 6/10/18.
  */
 

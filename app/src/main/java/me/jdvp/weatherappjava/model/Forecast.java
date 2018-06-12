@@ -4,6 +4,8 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
+ * Weather data for a single point in time
+ *
  * Created by jdvp on 6/10/18.
  */
 

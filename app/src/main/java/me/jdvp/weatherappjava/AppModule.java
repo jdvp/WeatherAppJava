@@ -12,7 +12,8 @@ import dagger.Provides;
 import me.jdvp.weatherappjava.viewmodel.impl.ViewModelModule;
 
 /**
- * Module that includes app wide dependencies that don't fit into VMs
+ * Module that includes app wide dependencies that don't fit into VMs but that we
+ * don't necessarily want to create (or get) every time we use them
  *
  * Created by jdvp on 6/11/18.
  */
