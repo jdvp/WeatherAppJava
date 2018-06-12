@@ -29,6 +29,10 @@ import static junit.framework.Assert.assertEquals;
 
 @RunWith(RobolectricTestRunner.class)
 public class LocationAPIImplTest extends RxJavaTest {
+    private static final double TEST_LATITUDE = 2.72;
+    private static final double TEST_LONGITUDE = 3.14;
+
+
     private FusedLocationProviderClient fusedLocationProviderClient;
     private Context context;
     private LocationAPIImpl locationAPI;
@@ -62,7 +66,7 @@ public class LocationAPIImplTest extends RxJavaTest {
         Mockito.when(context.checkPermission(Mockito.eq(ACCESS_COARSE_LOCATION), Mockito.anyInt(), Mockito.anyInt()))
                 .thenReturn(PackageManager.PERMISSION_DENIED);
 
-        locationAPI.setUserSelectedLocation(1.1, 2.2);
+        locationAPI.setUserSelectedLocation(TEST_LATITUDE, TEST_LONGITUDE);
         assertEquals(true, locationAPI.hasSelectedLocation());
     }
 
@@ -78,5 +82,27 @@ public class LocationAPIImplTest extends RxJavaTest {
         locationAPI.getLocation().subscribe(testObserver);
 
         testObserver.assertError(Exception.class);
+    }
+
+    /**
+     * If location permissions are off but the user has selected a location, the user-selected location will
+     * be returned
+     */
+    @Test
+    public void testGetLocation_NoPermissionsButUserSelectedLocation(){
+        Mockito.when(context.checkPermission(Mockito.eq(ACCESS_COARSE_LOCATION), Mockito.anyInt(), Mockito.anyInt()))
+                .thenReturn(PackageManager.PERMISSION_DENIED);
+
+        //pretend user had set a location
+        locationAPI.setUserSelectedLocation(TEST_LATITUDE, TEST_LONGITUDE);
+
+
+        TestObserver<Location> testObserver = new TestObserver<>();
+        locationAPI.getLocation().subscribe(testObserver);
+
+        assertEquals(1, testObserver.valueCount());
+        Location location = testObserver.values().get(0);
+        assertEquals(TEST_LATITUDE, location.getLatitude());
+        assertEquals(TEST_LONGITUDE, location.getLongitude());
     }
 }
