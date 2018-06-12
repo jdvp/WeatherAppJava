@@ -1,6 +1,7 @@
 package me.jdvp.weatherappjava;
 
 import android.content.Context;
+import android.location.Geocoder;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 
@@ -29,5 +30,11 @@ class AppModule {
     @Singleton
     FusedLocationProviderClient fusedLocationProviderClient(Context context) {
         return new FusedLocationProviderClient(context);
+    }
+
+    @Provides
+    @Singleton
+    Geocoder geocoder(Context context) {
+        return new Geocoder(context);
     }
 }

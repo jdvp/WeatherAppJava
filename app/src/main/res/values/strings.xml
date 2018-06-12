@@ -4,4 +4,5 @@
     <string name="now_header">NOW</string>
     <string name="error_title">Oops</string>
     <string name="error_message_service_failure">Something went wrong, please try again later</string>
+    <string name="search_for_location">Search for location</string>
 </resources>

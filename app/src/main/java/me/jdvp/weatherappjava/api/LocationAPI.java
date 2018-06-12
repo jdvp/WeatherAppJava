@@ -11,4 +11,8 @@ import io.reactivex.Observable;
 
 public interface LocationAPI {
     Observable<Location> getLocation();
+
+    void setUserSelectedLocation(double latitude, double longitude);
+
+    boolean hasSelectedLocation();
 }
